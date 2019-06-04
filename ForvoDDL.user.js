@@ -1,9 +1,10 @@
-﻿// ==UserScript==
+// ==UserScript==
 // @name         ForvoDDL
 // @namespace    https://yveone.com/ForvoDDL
 // @version      1.0.1
 // @description  Download audio files directly from Forvo website without account.
 // @author       YveOne (Yvonne P.)
+// @license      MIT; https://opensource.org/licenses/MIT
 // @include      https://forvo.com/*
 // @include      https://audio00.forvo.com/*
 // @grant        none
