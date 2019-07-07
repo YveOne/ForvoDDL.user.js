@@ -1,19 +1,19 @@
 // ==UserScript==
 // @name         ForvoDDL
 // @namespace    https://yveone.com/ForvoDDL
-// @version      1.0.2
+// @version      1.0.3
 // @description  Download audio files directly from Forvo website without account.
 // @author       YveOne (Yvonne P.)
 // @license      MIT; https://opensource.org/licenses/MIT
-// @include      https://forvo.com/*
+// @include      https://*.forvo.com/*
 // @include      https://audio00.forvo.com/*
 // @grant        none
 // ==/UserScript==
 
 /*global
-_SERVER_HOST
-_AUDIO_HTTP_HOST
-defaultProtocol
+    _SERVER_HOST
+    _AUDIO_HTTP_HOST
+    defaultProtocol
 */
 
 (function() {
@@ -40,6 +40,9 @@ defaultProtocol
     const reWordLocation = /https\:\/\/forvo\.com\/word\/(.*?)\//i;
     const reUserLocation = /https\:\/\/forvo\.com\/user\/(.*?)\/.*?\//i;
     const rePhraseLocation = /https\:\/\/forvo\.com\/phrase\/(.*?)\//i;
+    const reLangPronLocation = /https\:\/\/forvo\.com\/languages-pronunciations\/.*?\//i;
+    const reTagListLocation = /https\:\/\/forvo\.com\/tag\/.*?\//i;
+
 
     function getPlayData(playButton) {
         let m = playButton.getAttribute("onclick").match(rePlayData);
@@ -108,6 +111,20 @@ defaultProtocol
             let phrase = decUrl(m[1]);
             let user = row.querySelector("span.ofLink").innerHTML;
             filename = `${phrase} (by ${user}).${fileType}`;
+
+        } else if (reLangPronLocation.test(location.href)) {
+
+            let m = location.href.match(reLangPronLocation);
+            let word = row.querySelector("a.word").innerHTML;
+            filename = `${word}.${fileType}`;
+
+        } else if (reTagListLocation.test(location.href)) {
+
+            let m = location.href.match(reTagListLocation);
+            let word = row.querySelector("a.word").innerHTML;
+            filename = `${word}.${fileType}`;
+
+
 
         }
 
