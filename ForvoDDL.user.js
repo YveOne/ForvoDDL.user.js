@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         ForvoDDL
 // @namespace    https://yveone.com/ForvoDDL
-// @version      1.0.3
+// @version      1.0.4
 // @description  Download audio files directly from Forvo website without account.
 // @author       YveOne (Yvonne P.)
 // @license      MIT; https://opensource.org/licenses/MIT
@@ -11,9 +11,9 @@
 // ==/UserScript==
 
 /*global
-    _SERVER_HOST
-    _AUDIO_HTTP_HOST
-    defaultProtocol
+_SERVER_HOST
+_AUDIO_HTTP_HOST
+defaultProtocol
 */
 
 (function() {
@@ -35,13 +35,13 @@
 
     const rePlayData = /^play\((\d+),'([[A-Za-z0-9+\/=]+)?','([[A-Za-z0-9+\/=]+)?',(true|false),'([[A-Za-z0-9+\/=]+)?','([[A-Za-z0-9+\/=]+)?','([\w]+)?'\);.*?$/i;
     const selectorPlayButton = "span.play[onclick]";
-    const reSearchTranslationLocation = /https\:\/\/forvo\.com\/search-translation\/(.*?)\/(.*?)\//i;
-    const reSearchLocation = /https\:\/\/forvo\.com\/search\/(.*?)\//i;
-    const reWordLocation = /https\:\/\/forvo\.com\/word\/(.*?)\//i;
-    const reUserLocation = /https\:\/\/forvo\.com\/user\/(.*?)\/.*?\//i;
-    const rePhraseLocation = /https\:\/\/forvo\.com\/phrase\/(.*?)\//i;
-    const reLangPronLocation = /https\:\/\/forvo\.com\/languages-pronunciations\/.*?\//i;
-    const reTagListLocation = /https\:\/\/forvo\.com\/tag\/.*?\//i;
+    const reSearchTranslationLocation = /https\:\/\/(?:\w+\.)forvo\.com\/search-translation\/(.*?)\/(.*?)\//i;
+    const reSearchLocation = /https\:\/\/(?:\w+\.)forvo\.com\/search\/(.*?)\//i;
+    const reWordLocation = /https\:\/\/(?:\w+\.)forvo\.com\/word\/(.*?)\//i;
+    const reUserLocation = /https\:\/\/(?:\w+\.)forvo\.com\/user\/(.*?)\/.*?\//i;
+    const rePhraseLocation = /https\:\/\/(?:\w+\.)forvo\.com\/phrase\/(.*?)\//i;
+    const reLangPronLocation = /https\:\/\/(?:\w+\.)forvo\.com\/languages-pronunciations\/.*?\//i;
+    const reTagListLocation = /https\:\/\/(?:\w+\.)forvo\.com\/tag\/.*?\//i;
 
 
     function getPlayData(playButton) {
